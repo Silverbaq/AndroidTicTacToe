@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import dk.w4.tictactoe.databinding.ActivityMainBinding
 import dk.w4.tictactoe.tictactoe.TicTacToeViewModel
 import android.widget.Toast
-import dk.w4.tictactoe.tictactoe.Player
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +34,4 @@ class MainActivity : AppCompatActivity() {
         gameViewModel.getWinner().observe(this, Observer { player -> Toast.makeText(this, player?.name + " wins!", Toast.LENGTH_SHORT).show() })
     }
 
-fun onGameWinnerChanged(winner: Player?) {
-
-}
 }
