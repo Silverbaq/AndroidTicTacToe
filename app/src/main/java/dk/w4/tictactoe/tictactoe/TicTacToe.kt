@@ -1,11 +1,23 @@
 package dk.w4.tictactoe.tictactoe
 
+import android.arch.lifecycle.MutableLiveData
+
+
+
 class Player(val name: String, val icon: Char)
 
 class TicTacToe : ITicTacToe {
     private var currentPlayer: Player = Player("No one", '-')
     private lateinit var player1: Player
     private lateinit var player2: Player
+
+    var winner = MutableLiveData<Player>()
+
+    var board = arrayListOf(
+            arrayListOf(' ', ' ', ' '),
+            arrayListOf(' ', ' ', ' '),
+            arrayListOf(' ', ' ', ' ')
+    )
 
     override fun startGame(player1: Player, player2: Player) {
         this.player1 = player1
@@ -64,6 +76,7 @@ class TicTacToe : ITicTacToe {
 
         if (horizontal || vertical || diagonal){
             playing = false
+            winner.value = currentPlayer
             return true
         }
         return false
@@ -79,11 +92,7 @@ class TicTacToe : ITicTacToe {
 
     companion object {
         private var playing = false
-        private var board = arrayListOf(
-                arrayListOf(' ', ' ', ' '),
-                arrayListOf(' ', ' ', ' '),
-                arrayListOf(' ', ' ', ' ')
-        )
+
     }
 }
 
