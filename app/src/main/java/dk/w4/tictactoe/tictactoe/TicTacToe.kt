@@ -53,6 +53,7 @@ class TicTacToe : ITicTacToe {
                 arrayListOf(' ', ' ', ' '),
                 arrayListOf(' ', ' ', ' ')
         )
+        playing = true
         return true
     }
 

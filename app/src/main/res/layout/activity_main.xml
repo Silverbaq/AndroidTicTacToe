@@ -7,12 +7,17 @@
             name="gameViewModel"
             type="dk.w4.tictactoe.tictactoe.TicTacToeViewModel" />
     </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
     <LinearLayout
         android:background="@drawable/tictactoe"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
         android:padding="32dp"
         android:weightSum="3">
 
@@ -132,7 +137,14 @@
                 android:text='@{gameViewModel.board[2][2]}' />
         </LinearLayout>
 
-
     </LinearLayout>
+        <Button
+            android:text="Reset Game"
+            android:onClick="@{() -> gameViewModel.resetGame()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
 
 </layout>

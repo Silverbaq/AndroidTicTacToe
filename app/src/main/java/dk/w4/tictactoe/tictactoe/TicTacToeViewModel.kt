@@ -3,7 +3,7 @@ package dk.w4.tictactoe.tictactoe
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.LiveData
-
+import android.view.View
 
 
 class TicTacToeViewModel : ViewModel() {
@@ -16,11 +16,7 @@ class TicTacToeViewModel : ViewModel() {
         ticTacToe.startGame(p1,p2)
 
         board = MutableLiveData()
-        board.value =  arrayListOf(
-                arrayListOf(" ", " ", " "),
-                arrayListOf(" ", " ", " "),
-                arrayListOf(" ", " ", " ")
-        )
+        makeBoard()
     }
 
     fun onClickedCellAt(row: Int, column: Int) {
@@ -35,6 +31,19 @@ class TicTacToeViewModel : ViewModel() {
 
     fun getWinner(): LiveData<Player> {
         return ticTacToe.winner
+    }
+
+    fun resetGame(){
+        ticTacToe.resetGame()
+        makeBoard()
+    }
+
+    fun makeBoard(){
+        board.value =  arrayListOf(
+                arrayListOf(" ", " ", " "),
+                arrayListOf(" ", " ", " "),
+                arrayListOf(" ", " ", " ")
+        )
     }
 
 }
